@@ -1,16 +1,16 @@
-import { Box, Container } from "@mui/material";
-import Navbar from "./Navbar";
-import { Outlet } from "react-router-dom";
-import bg1 from "../assets/background-dark.png";
-import bg2 from "../assets/Swatch.png";
+import { Box, Container } from '@mui/material';
+import Navbar from './Navbar';
+import { Outlet } from 'react-router-dom';
+import bg1 from '../assets/background-dark.png';
+import bg2 from '../assets/Swatch.png';
 
-const bgStyle = (top) => ({
-  position: "fixed",
+const bgStyle = (top, heightAdjusted) => ({
+  position: 'fixed',
   top,
   left: 0,
-  width: { sm: "unset", xs: "unset", md: "100%" },
-  height: { sm: "100%", xs: "100%", md: "unset" },
-  zIndex: "-1",
+  width: { sm: 'unset', xs: 'unset', md: '100%' },
+  height: heightAdjusted ? { sm: '100%', xs: '100%', md: 'unset' } : '100%',
+  zIndex: '-1',
 });
 const RootLayout = () => {
   return (
@@ -18,8 +18,8 @@ const RootLayout = () => {
       <Container>
         <Navbar />
       </Container>
-      <Box component="img" src={bg1} alt="" sx={bgStyle(64)} />
-      <Box component="img" src={bg2} alt="" sx={bgStyle(0)} />
+      <Box component="img" src={bg1} alt="" sx={bgStyle(64, true)} />
+      <Box component="img" src={bg2} alt="" sx={bgStyle(0, false)} />
       <main>
         <Outlet />
       </main>
